@@ -1,6 +1,7 @@
 # coding=utf-8
 import logging
 
+
 # %(levelno)s: 打印日志级别的数值
 # %(levelname)s: 打印日志级别名称
 # %(pathname)s: 打印当前执行程序的路径，其实就是sys.argv[0]
@@ -13,11 +14,12 @@ import logging
 # %(process)d: 打印进程ID
 # %(message)s: 打印日志信息
 logging.basicConfig(
-    format='%(asctime)s %(levelname)s %(pathname)s:%(lineno)d %(threadName)s [%(name)s] %(message)s',
-    level=logging.DEBUG)
+    format='%(asctime)s %(levelname)s %(pathname)s:%(lineno)d %(threadName)s [%(name)s] %(message)s')
 
 
-def logger(name=''):
+def logger(name='', level=logging.INFO):
     '''获取日志记录器
     '''
-    return logging.getLogger(name)
+    logger = logging.getLogger(name)
+    logger.setLevel(level)
+    return logger
